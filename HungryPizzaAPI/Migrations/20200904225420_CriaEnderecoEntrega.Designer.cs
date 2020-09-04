@@ -4,14 +4,16 @@ using HungryPizzaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HungryPizzaAPI.Migrations
 {
     [DbContext(typeof(HungryPizzaAPIContext))]
-    partial class HungryPizzaAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20200904225420_CriaEnderecoEntrega")]
+    partial class CriaEnderecoEntrega
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,7 +28,7 @@ namespace HungryPizzaAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdEnderecoEntrega")
+                    b.Property<int?>("IdEnderecoEntregaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Login")
@@ -45,6 +47,8 @@ namespace HungryPizzaAPI.Migrations
                         .HasMaxLength(10);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdEnderecoEntregaId");
 
                     b.ToTable("Cliente");
                 });
@@ -127,6 +131,13 @@ namespace HungryPizzaAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pizza");
+                });
+
+            modelBuilder.Entity("HungryPizzaAPI.Models.Cliente", b =>
+                {
+                    b.HasOne("HungryPizzaAPI.Models.EnderecoEntrega", "IdEnderecoEntrega")
+                        .WithMany()
+                        .HasForeignKey("IdEnderecoEntregaId");
                 });
 
             modelBuilder.Entity("HungryPizzaAPI.Models.Pedido", b =>

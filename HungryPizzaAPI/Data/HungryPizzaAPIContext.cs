@@ -19,5 +19,7 @@ namespace HungryPizzaAPI.Data
         public DbSet<HungryPizzaAPI.Models.Pizza> Pizza { get; set; }
 
         public DbSet<HungryPizzaAPI.Models.Pedido> Pedido { get; set; }
+
+        public DbSet<HungryPizzaAPI.Models.EnderecoEntrega> EnderecoEntrega { get; set; }
     }
 }

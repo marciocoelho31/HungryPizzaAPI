@@ -23,7 +23,7 @@ namespace HungryPizzaAPI.Models
         [MaxLength(10, ErrorMessage = "A senha suporta até 10 caracteres")]
         public string Senha { get; set; }
 
-        public EnderecoEntrega IdEnderecoEntrega { get; set; }
+        public int IdEnderecoEntrega { get; set; }
 
     }
 }
