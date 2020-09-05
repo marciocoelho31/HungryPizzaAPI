@@ -25,14 +25,17 @@ namespace HungryPizzaAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetCliente()
         {
-            return await _context.Cliente.ToListAsync();
+            return await _context.Cliente
+                .Include(x => x.EnderecoEntrega)
+                .ToListAsync();
         }
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
-            var cliente = await _context.Cliente.FindAsync(id);
+            var cliente = await _context.Cliente.Include(i => i.EnderecoEntrega)
+                .FirstOrDefaultAsync(i => i.Id == id);
 
             if (cliente == null)
             {

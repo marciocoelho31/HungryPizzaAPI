@@ -4,14 +4,16 @@ using HungryPizzaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HungryPizzaAPI.Migrations
 {
     [DbContext(typeof(HungryPizzaAPIContext))]
-    partial class HungryPizzaAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20200905160125_ColunaClienteId-em-Pedidos")]
+    partial class ColunaClienteIdemPedidos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,14 +48,12 @@ namespace HungryPizzaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecoEntregaId");
-
                     b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("HungryPizzaAPI.Models.EnderecoEntrega", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EnderecoEntregaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -79,7 +79,7 @@ namespace HungryPizzaAPI.Migrations
                         .HasColumnType("nvarchar(2)")
                         .HasMaxLength(2);
 
-                    b.HasKey("Id");
+                    b.HasKey("EnderecoEntregaId");
 
                     b.ToTable("EnderecoEntrega");
                 });
@@ -105,9 +105,34 @@ namespace HungryPizzaAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClienteId");
+
                     b.HasIndex("EnderecoEntregaId");
 
                     b.ToTable("Pedido");
+                });
+
+            modelBuilder.Entity("HungryPizzaAPI.Models.PedidoItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdPizza1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPizza2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PedidoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PedidoId");
+
+                    b.ToTable("PedidoItem");
                 });
 
             modelBuilder.Entity("HungryPizzaAPI.Models.Pizza", b =>
@@ -134,18 +159,24 @@ namespace HungryPizzaAPI.Migrations
                     b.ToTable("Pizza");
                 });
 
-            modelBuilder.Entity("HungryPizzaAPI.Models.Cliente", b =>
+            modelBuilder.Entity("HungryPizzaAPI.Models.Pedido", b =>
                 {
+                    b.HasOne("HungryPizzaAPI.Models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId");
+
                     b.HasOne("HungryPizzaAPI.Models.EnderecoEntrega", "EnderecoEntrega")
                         .WithMany()
                         .HasForeignKey("EnderecoEntregaId");
                 });
 
-            modelBuilder.Entity("HungryPizzaAPI.Models.Pedido", b =>
+            modelBuilder.Entity("HungryPizzaAPI.Models.PedidoItem", b =>
                 {
-                    b.HasOne("HungryPizzaAPI.Models.EnderecoEntrega", "EnderecoEntrega")
-                        .WithMany()
-                        .HasForeignKey("EnderecoEntregaId");
+                    b.HasOne("HungryPizzaAPI.Models.Pedido", "Pedido")
+                        .WithMany("PedidoItens")
+                        .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

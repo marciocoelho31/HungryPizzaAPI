@@ -4,14 +4,16 @@ using HungryPizzaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HungryPizzaAPI.Migrations
 {
     [DbContext(typeof(HungryPizzaAPIContext))]
-    partial class HungryPizzaAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20200905162823_Pedido_endereco_entrega")]
+    partial class Pedido_endereco_entrega
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,14 +48,12 @@ namespace HungryPizzaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecoEntregaId");
-
                     b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("HungryPizzaAPI.Models.EnderecoEntrega", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EnderecoEntregaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -79,7 +79,7 @@ namespace HungryPizzaAPI.Migrations
                         .HasColumnType("nvarchar(2)")
                         .HasMaxLength(2);
 
-                    b.HasKey("Id");
+                    b.HasKey("EnderecoEntregaId");
 
                     b.ToTable("EnderecoEntrega");
                 });
@@ -132,13 +132,6 @@ namespace HungryPizzaAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pizza");
-                });
-
-            modelBuilder.Entity("HungryPizzaAPI.Models.Cliente", b =>
-                {
-                    b.HasOne("HungryPizzaAPI.Models.EnderecoEntrega", "EnderecoEntrega")
-                        .WithMany()
-                        .HasForeignKey("EnderecoEntregaId");
                 });
 
             modelBuilder.Entity("HungryPizzaAPI.Models.Pedido", b =>

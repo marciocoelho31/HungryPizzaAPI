@@ -25,7 +25,9 @@ namespace HungryPizzaAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pedido>>> GetPedido()
         {
-            return await _context.Pedido.ToListAsync();
+            return await _context.Pedido
+                .Include(x => x.EnderecoEntrega)
+                .ToListAsync();
         }
 
         // GET: api/Pedidos/5
@@ -78,8 +80,35 @@ namespace HungryPizzaAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
+        [Route("CriarPedido")]
         public async Task<ActionResult<Pedido>> PostPedido(Pedido pedido)
         {
+            _context.Pedido.Add(pedido);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetPedido", new { id = pedido.Id }, pedido);
+        }
+
+        [HttpPost]
+        [Route("CriarPedido/{login}")]
+        public async Task<ActionResult<Pedido>> PostPedidoClienteCadastrado(Pedido pedido, string login)
+        {
+            var nome_cliente = _context.Cliente
+                .Where(x => x.Login == login).FirstOrDefault().Nome;
+            var id_cliente = _context.Cliente
+                .Where(x => x.Login == login).FirstOrDefault().Id;
+            var id_endereco_entrega = _context.Cliente
+                .Where(x => x.Login == login).FirstOrDefault().EnderecoEntregaId;
+
+            pedido.NomeCliente = nome_cliente;
+
+            pedido.ClienteId = id_cliente;
+
+            pedido.EnderecoEntregaId = id_endereco_entrega;
+
+            pedido.EnderecoEntrega = _context.EnderecoEntrega
+                .Where(x => x.Id == id_endereco_entrega).FirstOrDefault();
+
             _context.Pedido.Add(pedido);
             await _context.SaveChangesAsync();
 

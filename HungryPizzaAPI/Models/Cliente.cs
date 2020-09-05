@@ -24,6 +24,7 @@ namespace HungryPizzaAPI.Models
         public string Senha { get; set; }
 
         public virtual int? EnderecoEntregaId { get; set; }
+        public virtual EnderecoEntrega EnderecoEntrega { get; set; }
 
     }
 }

@@ -11,15 +11,14 @@ namespace HungryPizzaAPI.Models
         [Key]
         public int Id { get; set; }
 
-        public int ClienteId { get; set; }
+        public int? ClienteId { get; set; }
         public DateTime DataPedido { get; set; }
-        public virtual Cliente Cliente { get; set; }
 
         public string NomeCliente { get; set; }
 
-        public EnderecoEntrega EnderecoEntrega { get; set; }
+        public virtual int? EnderecoEntregaId { get; set; }
 
-        public virtual ICollection<PedidoItem> PedidoItens { get; set; }
+        public EnderecoEntrega EnderecoEntrega { get; set; }
 
     }
 }

@@ -14,12 +14,12 @@ namespace HungryPizzaAPI.Data
         {
         }
 
-        public DbSet<HungryPizzaAPI.Models.Cliente> Cliente { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
 
-        public DbSet<HungryPizzaAPI.Models.Pizza> Pizza { get; set; }
+        public DbSet<Pizza> Pizza { get; set; }
 
-        public DbSet<HungryPizzaAPI.Models.Pedido> Pedido { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
 
-        public DbSet<HungryPizzaAPI.Models.EnderecoEntrega> EnderecoEntrega { get; set; }
+        public DbSet<EnderecoEntrega> EnderecoEntrega { get; set; }
     }
 }

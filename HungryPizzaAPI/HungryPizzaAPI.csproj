@@ -19,6 +19,14 @@
     <Compile Remove="Migrations\20200904235957_RelacionamentoClienteEnderecoEntrega.Designer.cs" />
     <Compile Remove="Migrations\20200905000500_RelacionamentoClienteEnderecoEntrega.cs" />
     <Compile Remove="Migrations\20200905000500_RelacionamentoClienteEnderecoEntrega.Designer.cs" />
+    <Compile Remove="Migrations\20200905164615_Pedido_endereco_entrega_ClienteId.cs" />
+    <Compile Remove="Migrations\20200905164615_Pedido_endereco_entrega_ClienteId.Designer.cs" />
+    <Compile Remove="Migrations\20200905164650_Pedido_endereco_entrega_ClienteId.cs" />
+    <Compile Remove="Migrations\20200905164650_Pedido_endereco_entrega_ClienteId.Designer.cs" />
+    <Compile Remove="Migrations\20200905164723_Pedido_endereco_entrega_ClienteId.cs" />
+    <Compile Remove="Migrations\20200905164723_Pedido_endereco_entrega_ClienteId.Designer.cs" />
+    <Compile Remove="Migrations\20200905164803_Pedido_endereco_entrega_ClienteId.cs" />
+    <Compile Remove="Migrations\20200905164803_Pedido_endereco_entrega_ClienteId.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

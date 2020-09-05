@@ -48,7 +48,7 @@ namespace HungryPizzaAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEnderecoEntrega(int id, EnderecoEntrega enderecoEntrega)
         {
-            if (id != enderecoEntrega.EnderecoEntregaId)
+            if (id != enderecoEntrega.Id)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace HungryPizzaAPI.Controllers
             _context.EnderecoEntrega.Add(enderecoEntrega);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEnderecoEntrega", new { id = enderecoEntrega.EnderecoEntregaId }, enderecoEntrega);
+            return CreatedAtAction("GetEnderecoEntrega", new { id = enderecoEntrega.Id }, enderecoEntrega);
         }
 
         // DELETE: api/EnderecoEntrega/5
@@ -104,7 +104,7 @@ namespace HungryPizzaAPI.Controllers
 
         private bool EnderecoEntregaExists(int id)
         {
-            return _context.EnderecoEntrega.Any(e => e.EnderecoEntregaId == id);
+            return _context.EnderecoEntrega.Any(e => e.Id == id);
         }
     }
 }
