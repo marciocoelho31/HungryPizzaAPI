@@ -11,7 +11,8 @@ namespace HungryPizzaAPI.Models
         [Key]
         public int Id { get; set; }
 
-        public int IdPedido { get; set; }
+        public int PedidoId { get; set; }
+        public virtual Pedido Pedido { get; set; }
 
         public int IdPizza1 { get; set; }
 

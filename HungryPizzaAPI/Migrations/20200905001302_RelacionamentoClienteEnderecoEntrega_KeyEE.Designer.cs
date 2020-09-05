@@ -4,14 +4,16 @@ using HungryPizzaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HungryPizzaAPI.Migrations
 {
     [DbContext(typeof(HungryPizzaAPIContext))]
-    partial class HungryPizzaAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20200905001302_RelacionamentoClienteEnderecoEntrega_KeyEE")]
+    partial class RelacionamentoClienteEnderecoEntrega_KeyEE
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,6 +47,8 @@ namespace HungryPizzaAPI.Migrations
                         .HasMaxLength(10);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EnderecoEntregaId");
 
                     b.ToTable("Cliente");
                 });
@@ -157,10 +161,17 @@ namespace HungryPizzaAPI.Migrations
                     b.ToTable("Pizza");
                 });
 
+            modelBuilder.Entity("HungryPizzaAPI.Models.Cliente", b =>
+                {
+                    b.HasOne("HungryPizzaAPI.Models.EnderecoEntrega", "EnderecoEntrega")
+                        .WithMany()
+                        .HasForeignKey("EnderecoEntregaId");
+                });
+
             modelBuilder.Entity("HungryPizzaAPI.Models.Pedido", b =>
                 {
                     b.HasOne("HungryPizzaAPI.Models.Cliente", "Cliente")
-                        .WithMany()
+                        .WithMany("Pedidos")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

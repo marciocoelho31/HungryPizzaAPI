@@ -9,6 +9,16 @@
     <Compile Remove="Migrations\20200904221310_PopularTabelas.Designer.cs" />
     <Compile Remove="Migrations\20200904221609_PopularTabelaPizza.cs" />
     <Compile Remove="Migrations\20200904221609_PopularTabelaPizza.Designer.cs" />
+    <Compile Remove="Migrations\20200904235400_RelacionamentoClienteEnderecoEntrega.cs" />
+    <Compile Remove="Migrations\20200904235400_RelacionamentoClienteEnderecoEntrega.Designer.cs" />
+    <Compile Remove="Migrations\20200904235818_RelacionamentoClienteEnderecoEntrega.cs" />
+    <Compile Remove="Migrations\20200904235818_RelacionamentoClienteEnderecoEntrega.Designer.cs" />
+    <Compile Remove="Migrations\20200904235923_RelacionamentoClienteEnderecoEntrega.cs" />
+    <Compile Remove="Migrations\20200904235923_RelacionamentoClienteEnderecoEntrega.Designer.cs" />
+    <Compile Remove="Migrations\20200904235957_RelacionamentoClienteEnderecoEntrega.cs" />
+    <Compile Remove="Migrations\20200904235957_RelacionamentoClienteEnderecoEntrega.Designer.cs" />
+    <Compile Remove="Migrations\20200905000500_RelacionamentoClienteEnderecoEntrega.cs" />
+    <Compile Remove="Migrations\20200905000500_RelacionamentoClienteEnderecoEntrega.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
