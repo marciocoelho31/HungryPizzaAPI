@@ -27,6 +27,10 @@
     <Compile Remove="Migrations\20200905164723_Pedido_endereco_entrega_ClienteId.Designer.cs" />
     <Compile Remove="Migrations\20200905164803_Pedido_endereco_entrega_ClienteId.cs" />
     <Compile Remove="Migrations\20200905164803_Pedido_endereco_entrega_ClienteId.Designer.cs" />
+    <Compile Remove="Migrations\20200905200756_pedidoitem_pizza_3.cs" />
+    <Compile Remove="Migrations\20200905200756_pedidoitem_pizza_3.Designer.cs" />
+    <Compile Remove="Migrations\20200905205001_pedidoitem_pizza_7.cs" />
+    <Compile Remove="Migrations\20200905205001_pedidoitem_pizza_7.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

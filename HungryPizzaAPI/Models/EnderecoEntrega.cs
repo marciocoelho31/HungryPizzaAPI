@@ -11,7 +11,7 @@ namespace HungryPizzaAPI.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="O endereço deve ser preenchido")]
         [MaxLength(100, ErrorMessage = "O endereço suporta até 100 caracteres")]
         public string Endereco { get; set; }
 

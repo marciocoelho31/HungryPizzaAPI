@@ -22,6 +22,6 @@ namespace HungryPizzaAPI.Models
 
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Preço unitário")]
-        public decimal Preco { get; set; }
+        public decimal PrecoSabor { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using HungryPizzaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HungryPizzaAPI.Migrations
 {
     [DbContext(typeof(HungryPizzaAPIContext))]
-    partial class HungryPizzaAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20200905205136_pedidoitem_pizza_8")]
+    partial class pedidoitem_pizza_8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,8 +96,7 @@ namespace HungryPizzaAPI.Migrations
                     b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DataPedido")
-                        .IsRequired()
+                    b.Property<DateTime>("DataPedido")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("EnderecoEntregaId")
@@ -103,9 +104,6 @@ namespace HungryPizzaAPI.Migrations
 
                     b.Property<string>("NomeCliente")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PedidoFinalizado")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -130,9 +128,6 @@ namespace HungryPizzaAPI.Migrations
                     b.Property<int?>("Pizza2Id")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("PrecoPizza")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PedidoId");
@@ -155,7 +150,7 @@ namespace HungryPizzaAPI.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<decimal>("PrecoSabor")
+                    b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Sabor")
