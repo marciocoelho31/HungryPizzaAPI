@@ -4,7 +4,7 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HungryPizzaAPI", "HungryPizzaAPI\HungryPizzaAPI.csproj", "{9C4A1242-2298-4AB5-844F-C1B804FCEFD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HungryPizzaAPI_Testes", "UnitTestProject\HungryPizzaAPI_Testes.csproj", "{9FD50997-96CB-49A5-9004-C635FDC91E5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HungryPizzaAPI_Testes", "HungryPizzaAPI_Testes\HungryPizzaAPI_Testes.csproj", "{9FD50997-96CB-49A5-9004-C635FDC91E5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

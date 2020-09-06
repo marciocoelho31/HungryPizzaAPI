@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Developer\\HungryPizzaAPI\\UnitTestProject\\HungryPizzaAPI_Testes.csproj": {}
+    "C:\\Developer\\HungryPizzaAPI\\HungryPizzaAPI_Testes\\HungryPizzaAPI_Testes.csproj": {}
   },
   "projects": {
     "C:\\Developer\\HungryPizzaAPI\\HungryPizzaAPI\\HungryPizzaAPI.csproj": {
@@ -87,14 +87,14 @@
         }
       }
     },
-    "C:\\Developer\\HungryPizzaAPI\\UnitTestProject\\HungryPizzaAPI_Testes.csproj": {
+    "C:\\Developer\\HungryPizzaAPI\\HungryPizzaAPI_Testes\\HungryPizzaAPI_Testes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Developer\\HungryPizzaAPI\\UnitTestProject\\HungryPizzaAPI_Testes.csproj",
+        "projectUniqueName": "C:\\Developer\\HungryPizzaAPI\\HungryPizzaAPI_Testes\\HungryPizzaAPI_Testes.csproj",
         "projectName": "HungryPizzaAPI_Testes",
-        "projectPath": "C:\\Developer\\HungryPizzaAPI\\UnitTestProject\\HungryPizzaAPI_Testes.csproj",
+        "projectPath": "C:\\Developer\\HungryPizzaAPI\\HungryPizzaAPI_Testes\\HungryPizzaAPI_Testes.csproj",
         "packagesPath": "C:\\Users\\marcio\\.nuget\\packages\\",
-        "outputPath": "C:\\Developer\\HungryPizzaAPI\\UnitTestProject\\obj\\",
+        "outputPath": "C:\\Developer\\HungryPizzaAPI\\HungryPizzaAPI_Testes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
