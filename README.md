@@ -48,11 +48,11 @@ http://localhost:51600/API/EnderecoEntrega \
 Parâmetros
 ```json
 {
-    "Endereco": "Rua Humaita, 109 apto 901",
-    "Bairro": "Humaita",
+    "Endereco": "Rua Desembargador Silva, 255 apto 1205",
+    "Bairro": "Centro",
     "Cidade": "Rio de Janeiro",
     "Estado": "RJ",
-    "Cep": "22261-000"
+    "Cep": "20040-000"
 }
 ```
 
