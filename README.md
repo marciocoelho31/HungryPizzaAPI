@@ -101,6 +101,3 @@ http://localhost:51600/API/Pedidos/24
 \
 Método GET\
 http://localhost:51600/API/Clientes/Historico/proberto
-
-
-- Testes - ? 
