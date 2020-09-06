@@ -26,10 +26,11 @@ Fique atento as regras:
 
 SOLUÇÃO:
 
-Incluir pedido de cliente sem cadastro:
+- Incluir pedido de cliente sem cadastro:
+Método POST:
 http://localhost:51600/API/Pedidos/CriarPedido
 
-passando
+Parâmetros:
 ```json
 {
     "dataPedido": "2020-09-05",
@@ -42,10 +43,11 @@ passando
 
 Aqui ele valida os dados e não deixa inserir sem data, sem nome de cliente e sem endereço de entrega.
 
-Incluir pedido com cliente cadastrado:
+- Incluir pedido com cliente cadastrado:
+Método POST:
 http://localhost:51600/API/Pedidos/CriarPedido/maria
 
-passando apenas a data:
+Parâmetros:
 ```json
 {
     "dataPedido": "2020-09-05"
@@ -56,20 +58,23 @@ Aqui a data é obrigatória também.
 
 
 
-Incluir pizza de 1 sabor:
+- Incluir pizza de 1 sabor
+Método POST:
 http://localhost:51600/API/Pedidos/InserirPizza/6
 
-Inserir pizza de 2 sabores (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor):
+- Inserir pizza de 2 sabores (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor):
+Método POST:
 http://localhost:51600/API/Pedidos/InserirPizza/4-6
 
 Em ambas chamadas acima (incluir pizza), a API valida se já tem 10 itens lançados para o pedido.
 
 
 
-Finalizar pedido:
+- Finalizar pedido:
+Método POST:
 http://localhost:51600/API/Pedidos/24
 
-passando
+Parâmetros:
 ```json
 {
     "id": 24,
