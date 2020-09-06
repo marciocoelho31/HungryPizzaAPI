@@ -19,12 +19,12 @@ namespace HungryPizzaAPI.Models
         [MaxLength(15, ErrorMessage = "O login suporta até 15 caracteres")]
         public string Login { get; set; }
 
-        [Required]
-        [MaxLength(10, ErrorMessage = "A senha suporta até 10 caracteres")]
         public string Senha { get; set; }
 
         public virtual int? EnderecoEntregaId { get; set; }
         public virtual EnderecoEntrega EnderecoEntrega { get; set; }
+
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
     }
 }

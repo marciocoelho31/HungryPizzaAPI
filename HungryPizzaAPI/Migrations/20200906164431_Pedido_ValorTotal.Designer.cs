@@ -4,14 +4,16 @@ using HungryPizzaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HungryPizzaAPI.Migrations
 {
     [DbContext(typeof(HungryPizzaAPIContext))]
-    partial class HungryPizzaAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20200906164431_Pedido_ValorTotal")]
+    partial class Pedido_ValorTotal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,9 @@ namespace HungryPizzaAPI.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Senha")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.HasKey("Id");
 
@@ -92,7 +96,8 @@ namespace HungryPizzaAPI.Migrations
                     b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataPedido")
+                    b.Property<DateTime?>("DataPedido")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("EnderecoEntregaId")

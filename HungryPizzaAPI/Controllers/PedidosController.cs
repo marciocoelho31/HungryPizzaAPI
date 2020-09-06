@@ -105,6 +105,8 @@ namespace HungryPizzaAPI.Controllers
                     $"Endereço de entrega não informado para o cliente {pedido.NomeCliente}.");
             }
 
+            pedido.DataPedido = DateTime.Now;
+
             _context.Pedido.Add(pedido);
             await _context.SaveChangesAsync();
 
@@ -113,7 +115,7 @@ namespace HungryPizzaAPI.Controllers
 
         [HttpPost]
         [Route("CriarPedido/{login}")]
-        public async Task<ActionResult<Pedido>> PostPedidoClienteCadastrado(Pedido pedido, string login)
+        public async Task<ActionResult<Pedido>> PostPedidoClienteCadastrado(string login)
         {
             var nome_cliente = _context.Cliente
                 .Where(x => x.Login == login).FirstOrDefault().Nome;
@@ -121,6 +123,8 @@ namespace HungryPizzaAPI.Controllers
                 .Where(x => x.Login == login).FirstOrDefault().Id;
             var id_endereco_entrega = _context.Cliente
                 .Where(x => x.Login == login).FirstOrDefault().EnderecoEntregaId;
+
+            Pedido pedido = new Pedido();
 
             pedido.NomeCliente = nome_cliente;
 
@@ -130,6 +134,8 @@ namespace HungryPizzaAPI.Controllers
 
             pedido.EnderecoEntrega = _context.EnderecoEntrega
                 .Where(x => x.Id == id_endereco_entrega).FirstOrDefault();
+
+            pedido.DataPedido = DateTime.Now;
 
             _context.Pedido.Add(pedido);
             await _context.SaveChangesAsync();
@@ -175,7 +181,7 @@ namespace HungryPizzaAPI.Controllers
 
             int ct_PedidoItems = await _context.PedidoItem
                 .Where(p => p.PedidoId == Convert.ToInt32(id_pedido)).CountAsync();
-            if (ct_PedidoItems > 10)
+            if (ct_PedidoItems >= 10)
             {
                 throw new ArgumentException(
                     $"Pedido {pedido.Id} não permite a inclusão de mais do que 10 itens.");
@@ -213,7 +219,7 @@ namespace HungryPizzaAPI.Controllers
 
             int ct_PedidoItems = await _context.PedidoItem
                 .Where(p => p.PedidoId == Convert.ToInt32(id_pedido)).CountAsync();
-            if (ct_PedidoItems > 10)
+            if (ct_PedidoItems >= 10)
             {
                 throw new ArgumentException(
                     $"Pedido {pedido.Id} não permite a inclusão de mais do que 10 itens.");
@@ -253,12 +259,27 @@ namespace HungryPizzaAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchPedido(int id, Pedido pedido)
+        public async Task<IActionResult> PatchPedido(int id)
         {
-            if (id != pedido.Id)
+            Pedido pedido = _context.Pedido
+                .Include(endereco => endereco.EnderecoEntrega)
+                .Include(item => item.PedidoItens)
+                    .ThenInclude(pizza => pizza.Pizza1)
+                .Include(item => item.PedidoItens)
+                    .ThenInclude(pizza => pizza.Pizza2)
+                .Where(p => p.Id == id).FirstOrDefault();
+
+            if (pedido == null)
             {
                 return BadRequest();
             }
+
+            // calculando valor total do pedido antes de gravar como finalizado
+            decimal valor_total = _context.PedidoItem
+                .Where(i => i.PedidoId == pedido.Id)
+                .Sum(i => i.PrecoPizza);
+            pedido.ValorTotal = valor_total;
+            pedido.PedidoFinalizado = 1;
 
             _context.Entry(pedido).State = EntityState.Modified;
 

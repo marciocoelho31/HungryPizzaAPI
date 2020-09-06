@@ -110,5 +110,24 @@ namespace HungryPizzaAPI.Controllers
         {
             return _context.Cliente.Any(e => e.Id == id);
         }
+
+        // GET: api/Clientes/Historico
+        [HttpGet]
+        [Route("Historico/{login}")]
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetClienteHistorico(string login)
+        {
+            return await _context
+                .Cliente
+                .Include(p => p.Pedidos)
+                    .ThenInclude(i => i.PedidoItens)
+                        .ThenInclude(i => i.Pizza1)
+                .Include(p => p.Pedidos)
+                    .ThenInclude(i => i.PedidoItens)
+                        .ThenInclude(i => i.Pizza2)
+                .Include(e => e.EnderecoEntrega)
+                .Where(c => c.Login == login)
+                .ToListAsync();
+        }
+
     }
 }

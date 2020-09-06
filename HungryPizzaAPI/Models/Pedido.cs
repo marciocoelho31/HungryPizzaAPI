@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,8 +13,7 @@ namespace HungryPizzaAPI.Models
         public int Id { get; set; }
 
         public int? ClienteId { get; set; }
-        [Required(ErrorMessage ="A data do pedido deve ser preenchida")]
-        public DateTime? DataPedido { get; set; }
+        public DateTime DataPedido { get; set; }
 
         public string NomeCliente { get; set; }
 
@@ -22,6 +22,9 @@ namespace HungryPizzaAPI.Models
         public EnderecoEntrega EnderecoEntrega { get; set; }
 
         public virtual ICollection<PedidoItem> PedidoItens { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ValorTotal { get; set; }
 
         public int PedidoFinalizado { get; set; }
 
