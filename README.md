@@ -29,7 +29,7 @@ SOLUÇÃO:
 - Incluir cliente\
 \
 Método POST\
-http://localhost:51600/API/Clientes
+http://localhost:51600/API/Clientes \
 \
 Parâmetros
 ```json
@@ -44,7 +44,7 @@ Parâmetros
 - Incluir endereço de entrega\
 \
 Método POST\
-http://localhost:51600/API/EnderecoEntrega
+http://localhost:51600/API/EnderecoEntrega \
 \
 Parâmetros
 ```json
@@ -60,7 +60,7 @@ Parâmetros
 - Incluir pedido de cliente sem cadastro\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/CriarPedido 
+http://localhost:51600/API/Pedidos/CriarPedido \
 \
 Parâmetros
 ```json
@@ -76,7 +76,7 @@ Aqui ele valida os dados e não deixa inserir sem nome de cliente e sem endereç
 - Incluir pedido com cliente cadastrado\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/CriarPedido/maria 
+http://localhost:51600/API/Pedidos/CriarPedido/maria \
 \
 Enviar JSON sem parâmetros:
 ```json
@@ -88,7 +88,7 @@ Enviar JSON sem parâmetros:
 - Incluir pizza de 1 sabor no pedido atual\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/InserirPizza/6 
+http://localhost:51600/API/Pedidos/InserirPizza/6
 
 - Inserir pizza de 2 sabores no pedido atual (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor)\
 \
@@ -101,7 +101,7 @@ Em ambas chamadas acima (incluir pizza), a API valida se já tem 10 itens lança
 - Finalizar pedido\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/24 
+http://localhost:51600/API/Pedidos/24 \
 \
 Enviar JSON sem parâmetros:
 ```json
