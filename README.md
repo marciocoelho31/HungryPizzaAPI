@@ -29,7 +29,7 @@ SOLUÇÃO:
 - Incluir pedido de cliente sem cadastro\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/CriarPedido \
+http://localhost:51600/API/Pedidos/CriarPedido 
 \
 Parâmetros
 ```json
@@ -47,7 +47,7 @@ Aqui ele valida os dados e não deixa inserir sem data, sem nome de cliente e se
 - Incluir pedido com cliente cadastrado\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/CriarPedido/maria \
+http://localhost:51600/API/Pedidos/CriarPedido/maria 
 \
 Parâmetros:
 ```json
@@ -63,12 +63,12 @@ Aqui a data é obrigatória também.
 - Incluir pizza de 1 sabor\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/InserirPizza/6 \
+http://localhost:51600/API/Pedidos/InserirPizza/6 
 
 - Inserir pizza de 2 sabores (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor)\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/InserirPizza/4-6 \
+http://localhost:51600/API/Pedidos/InserirPizza/4-6
 \
 Em ambas chamadas acima (incluir pizza), a API valida se já tem 10 itens lançados para o pedido.
 
@@ -76,7 +76,7 @@ Em ambas chamadas acima (incluir pizza), a API valida se já tem 10 itens lança
 - Finalizar pedido\
 \
 Método POST\
-http://localhost:51600/API/Pedidos/24 \
+http://localhost:51600/API/Pedidos/24 
 \
 Parâmetros:
 ```json
