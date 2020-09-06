@@ -26,60 +26,81 @@ Fique atento as regras:
 
 SOLUÇÃO:
 
-Incluir pedido de cliente sem cadastro:
-http://localhost:51600/API/Pedidos/CriarPedido
-
-passando
+- Incluir cliente\
+\
+Método POST\
+http://localhost:51600/API/Clientes \
+\
+Parâmetros
 ```json
 {
-    "dataPedido": "2020-09-05",
+    "nome": "Paulo Roberto",
+    "login": "proberto",
+    "enderecoEntregaId": 2
+}
+```
+
+- Incluir endereço de entrega\
+\
+Método POST\
+http://localhost:51600/API/EnderecoEntrega \
+\
+Parâmetros
+```json
+{
+    "Endereco": "Rua Desembargador Silva, 255 apto 1205",
+    "Bairro": "Centro",
+    "Cidade": "Rio de Janeiro",
+    "Estado": "RJ",
+    "Cep": "20040-000"
+}
+```
+
+- Incluir pedido de cliente sem cadastro\
+\
+Método POST\
+http://localhost:51600/API/Pedidos/CriarPedido \
+\
+Parâmetros
+```json
+{
     "nomeCliente": "Joao",
     "enderecoEntrega": {
         "endereco": "Rua XYZ"
     }
 }
 ```
+Aqui ele valida os dados e não deixa inserir sem nome de cliente e sem endereço de entrega.
 
-Aqui ele valida os dados e não deixa inserir sem data, sem nome de cliente e sem endereço de entrega.
-
-Incluir pedido com cliente cadastrado:
-http://localhost:51600/API/Pedidos/CriarPedido/maria
-
-passando apenas a data:
-```json
-{
-    "dataPedido": "2020-09-05"
-}
-```
-
-Aqui a data é obrigatória também.
+- Incluir pedido com cliente cadastrado\
+\
+Método POST (sem parâmetros)\
+http://localhost:51600/API/Pedidos/CriarPedido/maria 
 
 
-
-Incluir pizza de 1 sabor:
+- Incluir pizza de 1 sabor no pedido atual\
+\
+Método POST\
 http://localhost:51600/API/Pedidos/InserirPizza/6
 
-Inserir pizza de 2 sabores (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor):
+- Inserir pizza de 2 sabores no pedido atual (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor)\
+\
+Método POST\
 http://localhost:51600/API/Pedidos/InserirPizza/4-6
-
+\
 Em ambas chamadas acima (incluir pizza), a API valida se já tem 10 itens lançados para o pedido.
 
 
-
-Finalizar pedido:
-http://localhost:51600/API/Pedidos/24
-
-passando
-```json
-{
-    "id": 24,
-    "dataPedido": "2020-09-05",
-    "pedidoFinalizado":1
-}
-```
+- Finalizar pedido\
+\
+Método POST (sem parâmetros)\
+http://localhost:51600/API/Pedidos/24 
 
 
+- Histórico do cliente\
+\
+Método GET\
+http://localhost:51600/API/Clientes/Historico/proberto
 
-Histórico do cliente - ?
 
-Testes - ?
+- Testes - ? 
