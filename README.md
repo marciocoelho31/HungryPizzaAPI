@@ -36,7 +36,6 @@ Parâmetros
 {
     "nome": "Paulo Roberto",
     "login": "proberto",
-    "senha": "123456",
     "enderecoEntregaId": 2
 }
 ```
