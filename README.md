@@ -74,15 +74,10 @@ Aqui ele valida os dados e não deixa inserir sem nome de cliente e sem endereç
 
 - Incluir pedido com cliente cadastrado\
 \
-Método POST\
+Método POST (sem parâmetros)\
 http://localhost:51600/API/Pedidos/CriarPedido/maria \
 \
-Enviar JSON sem parâmetros:
-```json
-{
 
-}
-```
 
 - Incluir pizza de 1 sabor no pedido atual\
 \
@@ -99,19 +94,15 @@ Em ambas chamadas acima (incluir pizza), a API valida se já tem 10 itens lança
 
 - Finalizar pedido\
 \
-Método POST\
+Método POST (sem parâmetros)\
 http://localhost:51600/API/Pedidos/24 \
 \
-Enviar JSON sem parâmetros:
-```json
-{
 
-}
-```
 
 - Histórico do cliente\
 \
 Método GET\
 http://localhost:51600/API/Clientes/Historico/proberto
+
 
 - Testes - ? 
