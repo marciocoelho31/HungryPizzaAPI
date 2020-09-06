@@ -26,6 +26,37 @@ Fique atento as regras:
 
 SOLUÇÃO:
 
+- Incluir cliente\
+\
+Método POST\
+http://localhost:51600/API/Clientes
+\
+Parâmetros
+```json
+{
+    "nome": "Paulo Roberto",
+    "login": "proberto",
+    "senha": "123456",
+    "enderecoEntregaId": 2
+}
+```
+
+- Incluir endereço de entrega\
+\
+Método POST\
+http://localhost:51600/API/EnderecoEntrega
+\
+Parâmetros
+```json
+{
+    "Endereco": "Rua Humaita, 109 apto 901",
+    "Bairro": "Humaita",
+    "Cidade": "Rio de Janeiro",
+    "Estado": "RJ",
+    "Cep": "22261-000"
+}
+```
+
 - Incluir pedido de cliente sem cadastro\
 \
 Método POST\
@@ -34,38 +65,32 @@ http://localhost:51600/API/Pedidos/CriarPedido
 Parâmetros
 ```json
 {
-    "dataPedido": "2020-09-05",
     "nomeCliente": "Joao",
     "enderecoEntrega": {
         "endereco": "Rua XYZ"
     }
 }
 ```
-
-Aqui ele valida os dados e não deixa inserir sem data, sem nome de cliente e sem endereço de entrega.
+Aqui ele valida os dados e não deixa inserir sem nome de cliente e sem endereço de entrega.
 
 - Incluir pedido com cliente cadastrado\
 \
 Método POST\
 http://localhost:51600/API/Pedidos/CriarPedido/maria 
 \
-Parâmetros:
+Enviar JSON sem parâmetros:
 ```json
 {
-    "dataPedido": "2020-09-05"
+
 }
 ```
 
-Aqui a data é obrigatória também.
-
-
-
-- Incluir pizza de 1 sabor\
+- Incluir pizza de 1 sabor no pedido atual\
 \
 Método POST\
 http://localhost:51600/API/Pedidos/InserirPizza/6 
 
-- Inserir pizza de 2 sabores (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor)\
+- Inserir pizza de 2 sabores no pedido atual (meio a meio - a API calcula o valor correto a partir da metade do preço de cada sabor)\
 \
 Método POST\
 http://localhost:51600/API/Pedidos/InserirPizza/4-6
@@ -78,15 +103,16 @@ Em ambas chamadas acima (incluir pizza), a API valida se já tem 10 itens lança
 Método POST\
 http://localhost:51600/API/Pedidos/24 
 \
-Parâmetros:
+Enviar JSON sem parâmetros:
 ```json
 {
-    "id": 24,
-    "dataPedido": "2020-09-05",
-    "pedidoFinalizado":1
+
 }
 ```
 
-- Histórico do cliente - ?
+- Histórico do cliente\
+\
+Método GET\
+http://localhost:51600/API/Clientes/Historico/proberto
 
 - Testes - ? 
